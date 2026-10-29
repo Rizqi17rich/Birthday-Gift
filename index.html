@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>For My Beautiful Girl ♡</title>
+<style>
+:root{--pink:#e7799e;--rose:#fff0f4;--ink:#46333a}
+*{box-sizing:border-box}
+body{margin:0;font-family:Georgia,'Times New Roman',serif;background:linear-gradient(160deg,#fff9f5,#ffe8ef);color:var(--ink);text-align:center}
+main{max-width:680px;margin:auto;padding:26px 18px 60px}
+.card{background:rgba(255,255,255,.82);border:1px solid #f5c6d5;border-radius:24px;padding:28px 20px;margin:18px 0;box-shadow:0 10px 30px #d99aaa20}
+.eyebrow{font:700 12px Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;color:#bd5c7e}
+h1{font-size:clamp(34px,8vw,54px);font-weight:normal;margin:12px 0}
+h2{font-size:28px;font-weight:normal}
+p{font-size:17px;line-height:1.7}
+button{border:0;border-radius:999px;background:var(--pink);color:white;font-weight:bold;font-size:16px;padding:14px 24px;cursor:pointer}
+#inside{display:none}
+.reason{padding:18px 12px;border-top:1px solid #f5d5df}
+.reason h3{font-size:21px;margin:6px}
+.small{font:13px Arial,sans-serif;color:#8b6874}
+.heart{font-size:30px;color:#df7095}
+.photo-note{font:14px Arial,sans-serif;color:#98727e;line-height:1.5}
+footer{font:13px Arial,sans-serif;color:#9c7582;margin-top:25px}
+</style>
+</head>
+<body>
+<main>
+  <section class="card" id="cover">
+    <div class="heart">♡</div>
+    <div class="eyebrow">A little something for you</div>
+    <h1>Happy Birthday,<br>Beautiful Girl</h1>
+    <p>I made this little page just for you.<br>Open it when you're ready, my love.</p>
+    <button id="openBtn">Open your letter ♡</button>
+    <p class="small">Turn your volume up a little 🎶</p>
+  </section>
+
+  <section id="inside">
+    <section class="card">
+      <div class="eyebrow">To my favorite person</div>
+      <h2>Happy birthday, sayang ❤️</h2>
+      <p>I'm so lucky to have you in my life. You're beautiful, kind, patient, and one of the hardest-working people I know. I hope this new chapter brings you the happiness, peace, and love you deserve.</p>
+      <p>I may not be able to make every day easy, but I want to keep learning how to be someone you can lean on. Please remember to rest, take care of yourself, and keep that beautiful smile of yours. I'm so proud of you, always.</p>
+      <p><strong>I love you so, so much. Happy birthday, my love. ♡</strong></p>
+    </section>
+
+    <section class="card">
+      <div class="eyebrow">A few little reasons</div>
+      <h2>4 reasons I love you</h2>
+      <div class="reason"><div class="heart">♡</div><h3>Your eyes & your smile</h3><p>I love your eyes because I could look into them for hours and never get bored. And your smile is one of my favorite things in the world. They make me fall for you over and over again.</p></div>
+      <div class="reason"><div class="heart">♡</div><h3>Your beautiful heart</h3><p>I love how kind, caring, and patient you are. Your beautiful heart makes you even more special to me.</p></div>
+      <div class="reason"><div class="heart">♡</div><h3>Your strength</h3><p>I admire how hard you work, even when things get tiring. I hope you know how proud I am of you—and that you deserve rest and softness, too.</p></div>
+      <div class="reason"><div class="heart">♡</div><h3>Simply because you're you</h3><p>Your little habits, your laughter, your flaws, and the little things you don't notice about yourself—I love them because they're part of you.</p></div>
+    </section>
+
+    <section class="card">
+      <div class="heart">♡</div>
+      <h2>One last thing...</h2>
+      <p>In every version of my life, I hope I get to find you and choose you again.</p>
+      <button id="loveBtn">I love you ♡</button>
+      <p id="loveMsg" style="display:none">And I'll keep choosing you, again and again. ❤️</p>
+    </section>
+  </section>
+  <footer>Made with love, just for you ♡</footer>
+</main>
+<audio id="song" preload="none" loop>
+  <source src="https://files.media2url.com/free/57ae8d9f17a349.mp3" type="audio/mpeg">
+</audio>
+<script>
+const openBtn=document.getElementById('openBtn');
+const inside=document.getElementById('inside');
+const song=document.getElementById('song');
+openBtn.addEventListener('click',async()=>{
+  inside.style.display='block';
+  document.getElementById('cover').style.display='none';
+  try{await song.play();}catch(e){/* If playback is blocked, use the play button shown below. */}
+  if(song.paused){
+    const play=document.createElement('button');
+    play.textContent='Play music ♫';
+    play.style.margin='12px';
+    play.onclick=()=>song.play();
+    inside.prepend(play);
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+document.getElementById('loveBtn').addEventListener('click',()=>{
+ document.getElementById('loveMsg').style.display='block';
+ for(let i=0;i<12;i++){const h=document.createElement('span');h.textContent='♥';h.style.cssText=`position:fixed;left:${Math.random()*95}%;top:${Math.random()*90}%;color:#e7799e;font-size:${18+Math.random()*22}px;pointer-events:none;animation:fade 2s forwards`;document.body.appendChild(h);setTimeout(()=>h.remove(),2000);}
+});
+const style=document.createElement('style');style.textContent='@keyframes fade{0%{transform:translateY(0);opacity:1}100%{transform:translateY(-70px);opacity:0}}';document.head.appendChild(style);
+</script>
+</body>
+</html>
