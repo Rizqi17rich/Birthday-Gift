@@ -49,6 +49,90 @@ h1, h2, h3 {
     transform: translateY(-8px);
   }
 }
+/* POLAROID GALLERY */
+.memories {
+  padding: 35px 15px;
+  text-align: center;
+}
+
+.polaroid-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 650px;
+  margin: 25px auto;
+}
+
+.polaroid {
+  background: white;
+  padding: 9px 9px 22px;
+  border-radius: 4px;
+  box-shadow: 0 5px 18px rgba(180, 90, 120, .18);
+  transform: rotate(-3deg);
+}
+
+.polaroid:nth-child(even) {
+  transform: rotate(3deg);
+}
+
+.polaroid img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+.polaroid p {
+  color: #bd6685;
+  margin: 12px 0 0;
+  font-family: cursive;
+}
+
+/* FLOATING HEARTS */
+.floating-heart {
+  position: fixed;
+  bottom: -30px;
+  color: #f28aaa;
+  pointer-events: none;
+  z-index: 10;
+  animation: heartUp 7s linear forwards;
+}
+
+@keyframes heartUp {
+  to {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* SURPRISE BUTTON */
+.surprise-button {
+  background: #e98aaa;
+  color: white;
+  border: none;
+  padding: 14px 25px;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px #e98aaa55;
+}
+
+.surprise-message {
+  display: none;
+  background: #fff0f5;
+  color: #b85c7c;
+  padding: 22px;
+  border-radius: 15px;
+  margin: 20px auto;
+  max-width: 450px;
+  line-height: 1.8;
+}
+
+@media (max-width: 400px) {
+  .polaroid-gallery {
+    gap: 12px;
+  }
+}
 </style>
 </head>
 <body>
@@ -132,5 +216,70 @@ const start=new Date('2026-08-29T00:00:00+07:00');
 function updateCounter(){let diff=Math.max(0,Date.now()-start.getTime());let s=Math.floor(diff/1000);document.getElementById('days').textContent=Math.floor(s/86400);document.getElementById('hours').textContent=String(Math.floor(s%86400/3600)).padStart(2,'0');document.getElementById('minutes').textContent=String(Math.floor(s%3600/60)).padStart(2,'0');document.getElementById('seconds').textContent=String(s%60).padStart(2,'0')}
 updateCounter();setInterval(updateCounter,1000);
 document.getElementById('loveButton').addEventListener('click',()=>{document.getElementById('secret').innerHTML='And I’ll keep choosing you, again and again. ❤️<br>Love you endlessly, Nanda. 💗';for(let i=0;i<14;i++){const h=document.createElement('span');h.textContent='💗';h.style.position='fixed';h.style.left=(8+Math.random()*84)+'vw';h.style.top=(45+Math.random()*40)+'vh';h.style.fontSize=(16+Math.random()*20)+'px';h.style.pointerEvents='none';h.style.zIndex='10';document.body.appendChild(h);h.animate([{transform:'translateY(0) scale(.7)',opacity:1},{transform:'translateY(-180px) scale(1.4)',opacity:0}],{duration:1500+Math.random()*700,easing:'ease-out'}).onfinish=()=>h.remove()}});
+</script>
+<!-- GALERI KENANGAN -->
+<section class="memories">
+  <h2>Our Little Memories 💗</h2>
+  <p>Potongan kecil cerita indah kita</p>
+
+  <div class="polaroid-gallery">
+    <div class="polaroid">
+      <img src="us-01.jpg" alt="Kenangan kita 1">
+      <p>My favorite person ♡</p>
+    </div>
+
+    <div class="polaroid">
+      <img src="us-02.jpg" alt="Kenangan kita 2">
+      <p>Sweet moments ♡</p>
+    </div>
+
+    <div class="polaroid">
+      <img src="us-03.jpg" alt="Kenangan kita 3">
+      <p>Always together ♡</p>
+    </div>
+
+    <div class="polaroid">
+      <img src="us-04.jpg" alt="Kenangan kita 4">
+      <p>My happy place ♡</p>
+    </div>
+  </div>
+
+  <h2>A Little Surprise For You 🎀</h2>
+
+  <button class="surprise-button" onclick="showSurprise()">
+    Open Your Surprise 💌
+  </button>
+
+  <div class="surprise-message" id="surpriseMessage">
+    <h3>For My Favorite Person 💗</h3>
+    Terima kasih sudah hadir dalam hidupku.
+    Aku mungkin tidak selalu sempurna,
+    tapi aku akan selalu berusaha membuatmu bahagia.
+    <br><br>
+    I love you, today, tomorrow, and always. ♡
+  </div>
+</section>
+
+<script>
+function showSurprise() {
+  const message = document.getElementById("surpriseMessage");
+  message.style.display =
+    message.style.display === "block" ? "none" : "block";
+}
+
+/* FLOATING HEART DECORATION */
+setInterval(function() {
+  const heart = document.createElement("span");
+  heart.className = "floating-heart";
+  heart.innerHTML = Math.random() > 0.5 ? "♥️" : "♡";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (14 + Math.random() * 15) + "px";
+
+  document.body.appendChild(heart);
+
+  setTimeout(function() {
+    heart.remove();
+  }, 7000);
+}, 1200);
 </script>
 </body></html>
