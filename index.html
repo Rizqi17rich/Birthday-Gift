@@ -217,6 +217,8 @@ function updateCounter(){let diff=Math.max(0,Date.now()-start.getTime());let s=M
 updateCounter();setInterval(updateCounter,1000);
 document.getElementById('loveButton').addEventListener('click',()=>{document.getElementById('secret').innerHTML='And I’ll keep choosing you, again and again. ❤️<br>Love you endlessly, Nanda. 💗';for(let i=0;i<14;i++){const h=document.createElement('span');h.textContent='💗';h.style.position='fixed';h.style.left=(8+Math.random()*84)+'vw';h.style.top=(45+Math.random()*40)+'vh';h.style.fontSize=(16+Math.random()*20)+'px';h.style.pointerEvents='none';h.style.zIndex='10';document.body.appendChild(h);h.animate([{transform:'translateY(0) scale(.7)',opacity:1},{transform:'translateY(-180px) scale(1.4)',opacity:0}],{duration:1500+Math.random()*700,easing:'ease-out'}).onfinish=()=>h.remove()}});
 </script>
+
+<script>
 <!-- GALERI KENANGAN -->
 <section class="memories">
   <h2>Our Little Memories 💗</h2>
